@@ -7,7 +7,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 })
 export class KeyComponent {
   @Input()
-  key!: string;
+  code!: string;
   @Input()
   highlighted!: boolean;
   @Input()

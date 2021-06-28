@@ -1,7 +1,7 @@
 <div
   class="key-container"
   [ngClass]="getClasses()"
-  (click)="enabled ? clicked.emit(key) : null">
+  (click)="enabled ? clicked.emit(code) : null">
   <!-- Top Section -->
   <span *ngIf="shiftLabel" class="shift-label">
     {{ shiftLabel }}
