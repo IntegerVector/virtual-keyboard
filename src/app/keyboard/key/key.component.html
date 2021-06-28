@@ -1,0 +1,21 @@
+<div
+  class="key-container"
+  [ngClass]="getClasses()"
+  (click)="enabled ? clicked.emit(key) : null">
+  <!-- Top Section -->
+  <span *ngIf="shiftLabel" class="shift-label">
+    {{ shiftLabel }}
+  </span>
+  <span *ngIf="!shiftLabel" class="shift-label">
+    {{ label }}
+  </span>
+  <!-- End of Top Section -->
+  <!-- Bottom Section -->
+  <span *ngIf="shiftLabel" class="label">
+    {{ label }}
+  </span>
+  <span class="alt-label">
+    {{ altLabel }}
+  </span>
+  <!-- End of Bottom Section -->
+</div>
