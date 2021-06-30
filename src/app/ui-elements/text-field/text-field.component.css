@@ -1,12 +1,10 @@
 .text__container {
   outline: none;
   resize: none;
+  font-size: 18px;
   padding: 0.5rem;
   width: calc(100% - 1rem);
   height: calc(100% - 1rem);
   border-radius: 0.2rem;
   border: 0 solid transparent;
-  box-shadow: -0.05rem 0.05rem 0.2rem 0.01rem #00000030;
-  -webkit-box-shadow: -0.05rem 0.05rem 0.2rem 0.01rem #00000030;
-  -moz-box-shadow: -0.05rem 0.05rem 0.2rem 0.01rem #00000030;
 }

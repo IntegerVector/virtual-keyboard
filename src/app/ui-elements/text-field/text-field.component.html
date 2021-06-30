@@ -1,5 +1,6 @@
 <textarea
   class="text__container"
+  [placeholder]="'Type here ...'"
   [(ngModel)]="text"
   (ngModelChange)="onChange.emit($event)">
 </textarea>
