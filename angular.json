@@ -101,7 +101,11 @@
         },
         "deploy": {
           "builder": "angular-cli-ghpages:deploy",
-          "options": {}
+          "options": {
+	  	"baseHref": "https://integervector.github.io/virtual-keyboard/",
+		"name": "IntegerVector",
+		"email": "andrii.ruban@outlook.com"
+	  }
         }
       }
     }
