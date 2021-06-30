@@ -1,0 +1,7 @@
+.dropdown {
+  outline: none;
+  padding: 0.2rem;
+  border: 0 solid transparent;
+  border-radius: 0.2rem;
+  background-color: hsl(0, 0%, 95%);
+}
