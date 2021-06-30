@@ -1,72 +1,59 @@
 .key-container {
-  padding: 0.75rem;
   user-select: none;
-  transition: background-color 100ms;
-  display: grid;
-  grid-template-rows: 1rem 1rem;
-  grid-template-columns: max-content;
-  grid-template-areas: 
-    "shift-label ."
-    "label alt-label";
-  background-color: hsl(0, 0%, 75%);
-  border: 1px solid hsl(0, 0%, 75%);
-  border-radius: 0.2rem;
-  box-shadow: -0.1rem 0.1rem 0.2rem -0.2rem #000000;
-  -webkit-box-shadow: -0.1rem 0.1rem 0.2rem -0.2rem #000000;
-  -moz-box-shadow: -0.1rem 0.1rem 0.2rem -0.2rem #000000;
-}
-
-.key-container--clickable {
   cursor: pointer;
-}
-
-.key-container--clickable.key-container:hover {
-  background-color: hsl(0, 0%, 80%);
-  border: 1px solid hsl(0, 0%, 80%);
-}
-
-.key-container--clickable.key-container:active {
+  height: 2rem;
+  min-width: 2rem;
+  max-width: 10rem;
+  padding: 0.75rem;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  border-radius: 0.2rem;
   background-color: hsl(0, 0%, 75%);
-  border: 1px solid hsl(0, 0%, 75%);
+  box-shadow: -0.05rem 0.05rem 0.2rem 0.01rem #00000030;
+  -webkit-box-shadow: -0.05rem 0.05rem 0.2rem 0.01rem #00000030;
+  -moz-box-shadow: -0.05rem 0.05rem 0.2rem 0.01rem #00000030;
+  transition: background-color 100ms;
+}
+
+.key-container:hover {
+  background-color: hsl(0, 0%, 80%);
+}
+
+.key-container:active {
+  background-color: hsl(0, 0%, 75%);
 }
 
 .key-container--highlighted {
+  background-color: transparent
+}
+
+.key-container--highlighted:hover {
   background-color: hsl(0, 0%, 95%);
-  border: 1px solid hsl(0, 0%, 80%);
 }
 
-.key-container--clickable.key-container--highlighted:hover {
-  background-color: hsl(0, 0%, 100%);
+.key-container--highlighted:active {
+  background-color: transparent
 }
 
-.key-container--clickable.key-container--highlighted:active {
-  background-color: hsl(0, 0%, 95%);
-  border: 1px solid hsl(0, 0%, 80%);
-}
-
-.key-container--activated {
+.key-container--sticking {
   color: white;
   background-color: hsl(0, 0%, 0%);
 }
 
-.key-container--clickable.key-container--activated:hover {
+.key-container--sticking:hover {
   color: white;
   background-color: hsl(0, 0%, 20%);
 }
 
-.key-container--clickable.key-container--activated:active {
+.key-container--sticking:active {
   color: white;
   background-color: hsl(0, 0%, 0%);
 }
 
-.shift-label {
-  grid-area: shift-label;
-}
-
 .label {
-  grid-area: label;
+  color: hsl(0, 0%, 80%);
 }
 
-.alt-label {
-  grid-area: alt-label;
+.label--active {
+  color: hsl(0, 0%, 0%);
 }

@@ -1,21 +1,17 @@
 <div
   class="key-container"
-  [ngClass]="getClasses()"
-  (click)="enabled ? clicked.emit(code) : null">
-  <!-- Top Section -->
-  <span *ngIf="shiftLabel" class="shift-label">
-    {{ shiftLabel }}
+  [ngClass]="getButtonClasses()"
+  (click)="clicked.emit(key)">
+  <span [ngClass]="getLabelClasses(1)">
+    {{ key.labels[1] }}
   </span>
-  <span *ngIf="!shiftLabel" class="shift-label">
-    {{ label }}
+  <span [ngClass]="getLabelClasses(3)">
+    {{ key.labels[3] }}
   </span>
-  <!-- End of Top Section -->
-  <!-- Bottom Section -->
-  <span *ngIf="shiftLabel" class="label">
-    {{ label }}
+  <span [ngClass]="getLabelClasses(0)">
+    {{ key.labels[0] }}
   </span>
-  <span class="alt-label">
-    {{ altLabel }}
+  <span [ngClass]="getLabelClasses(2)">
+    {{ key.labels[2] }}
   </span>
-  <!-- End of Bottom Section -->
 </div>

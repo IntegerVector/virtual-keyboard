@@ -1,35 +1,33 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 
+import { Key } from './types/key.interface';
+
 @Component({
   selector: 'app-key',
   templateUrl: './key.component.html',
   styleUrls: ['./key.component.css']
 })
 export class KeyComponent {
-  @Input()
-  code!: string;
-  @Input()
-  highlighted!: boolean;
-  @Input()
-  enabled!: boolean;
-  @Input()
-  active!: boolean;
-  @Input()
-  label!: string;
-  @Input()
-  shiftLabel!: string;
-  @Input()
-  altLabel!: string;
+  @Input()key: Key = {
+    code: '',
+    labels: [],
+    activeLabelNumber: 0,
+    sticking: false,
+    highlighted: false
+  };
 
-  @Output() clicked = new EventEmitter<string>();
+  @Output() clicked = new EventEmitter<Key>();
 
-  constructor() { }
+  public getButtonClasses(): string {
+    const isHighlighted = this.key.highlighted ? 'key-container--highlighted' : '';
+    const isActive = this.key.sticking ? 'key-container--sticking' : '';
 
-  public getClasses(): string {
-    const isHighlighted = this.highlighted ? 'key-container--highlighted' : '';
-    const isEnabled = this.enabled ? 'key-container--clickable' : '';
-    const isActive = this.active ? 'key-container--activated' : '';
+    return `${isHighlighted} ${isActive}`;
+  }
 
-    return `${isHighlighted} ${isEnabled} ${isActive}`;
+  public getLabelClasses(labelNumber: number): string {
+    return labelNumber === this.key.activeLabelNumber
+      ? 'label label--active'
+      : 'label'
   }
 }
