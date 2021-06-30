@@ -1,0 +1,61 @@
+{
+  "specialKeys": [],
+  "keyRows": [
+    [
+        { "code": "Backquote", "keys": ["'", "ʼ", " ́", "~"] },
+        { "code": "Digit1", "keys": ["1", "!", "¹", "!"] },
+        { "code": "Digit2", "keys": ["2", "\"", "²", "’"] },
+        { "code": "Digit3", "keys": ["3", "№", "§", "₴"] },
+        { "code": "Digit4", "keys": ["4", ";", "$", "€"] },
+        { "code": "Digit5", "keys": ["5", "%", "°", ""] },
+        { "code": "Digit6", "keys": ["6", ":", "<", ""] },
+        { "code": "Digit7", "keys": ["7", "?", ">", ""] },
+        { "code": "Digit8", "keys": ["8", "*", "•", ""] },
+        { "code": "Digit9", "keys": ["9", "(", "[", "{"] },
+        { "code": "Digit0", "keys": ["0", ")", "]", "}"] },
+        { "code": "Minus", "keys": ["-", "_", "—", "–"] },
+        { "code": "Equal", "keys": ["=", "+", "≠", "±"] }
+    ],
+    [
+        { "code": "KeyQ", "keys": ["й", "Й", "", ""] },
+        { "code": "KeyW", "keys": ["ц", "Ц", "", ""] },
+        { "code": "KeyE", "keys": ["у", "У", "ў", "Ў"] },
+        { "code": "KeyR", "keys": ["к", "К", "®", ""] },
+        { "code": "KeyT", "keys": ["е", "Е", "", ""] },
+        { "code": "KeyY", "keys": ["н", "Н", "", ""] },
+        { "code": "KeyU", "keys": ["г", "Г", "", ""] },
+        { "code": "KeyI", "keys": ["ш", "Ш", "", ""] },
+        { "code": "KeyO", "keys": ["щ", "Щ", "", ""] },
+        { "code": "KeyP", "keys": ["з", "З", "", ""] },
+        { "code": "BracketLeft", "keys": ["х", "Х", "", ""] },
+        { "code": "BracketRight", "keys": ["ї", "Ї", "", ""] }
+    ],
+    [
+        { "code": "KeyA", "keys": ["ф", "Ф", "", ""] },
+        { "code": "KeyS", "keys": ["і", "І", "", ""] },
+        { "code": "KeyD", "keys": ["в", "В", "", ""] },
+        { "code": "KeyF", "keys": ["а", "А", "", ""] },
+        { "code": "KeyG", "keys": ["п", "П", "", ""] },
+        { "code": "KeyH", "keys": ["р", "Р", "", ""] },
+        { "code": "KeyJ", "keys": ["о", "О", "", ""] },
+        { "code": "KeyK", "keys": ["л", "Л", "", ""] },
+        { "code": "KeyL", "keys": ["д", "Д", "", ""] },
+        { "code": "Semicolon", "keys": ["ж", "Ж", "", ""] },
+        { "code": "Quote", "keys": ["є", "Є", "", ""] },
+        { "code": "Backslash", "keys": ["ґ", "Ґ", "\\", "|"] }
+    ],
+    [
+        { "code": "IntlBackslash", "keys": ["/", "|", "|", "¦"] },
+        { "code": "KeyZ", "keys": ["я", "Я", "", ""] },
+        { "code": "KeyX", "keys": ["ч", "Ч", "", ""] },
+        { "code": "KeyC", "keys": ["с", "С", "©", ""] },
+        { "code": "KeyV", "keys": ["м", "М", "", ""] },
+        { "code": "KeyB", "keys": ["и", "И", "", ""] },
+        { "code": "KeyN", "keys": ["т", "Т", "™", ""] },
+        { "code": "KeyM", "keys": ["ь", "Ь", "", ""] },
+        { "code": "Comma", "keys": ["б", "Б", "«", "„"] },
+        { "code": "Period", "keys": ["ю", "Ю", "»", "“"] },
+        { "code": "Slash", "keys": [".", ",", "/", "…"] }
+    ]
+  ]
+}
