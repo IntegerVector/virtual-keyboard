@@ -1,0 +1,22 @@
+<div class="keyboard-container">
+  <div class="additional-keys__container">
+    <div *ngFor="let addKey of additionalKeys">
+      <span
+        class="additional-keys__key"
+        (click)="sendKey(addKey.label)">
+        {{ addKey.label }}
+      </span>
+    </div>
+  </div>
+  <div class="rows__container">
+    <div
+      class="rows__row"
+      *ngFor="let row of rows; index as i">
+        <app-key
+          *ngFor="let key of row.keys"
+          [key]="key"
+          (clicked)="handleKey($event, i)">
+        </app-key>
+    </div>
+  </div>
+</div>

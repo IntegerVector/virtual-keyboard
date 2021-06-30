@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { KeyboardModule } from './keyboard/keyboard.module';
+import { DataSourceService } from './services/data-source/data-source.service';
 import { AppComponent } from './app.component';
 
 @NgModule({
@@ -10,9 +12,10 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     KeyboardModule
   ],
-  providers: [],
+  providers: [DataSourceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

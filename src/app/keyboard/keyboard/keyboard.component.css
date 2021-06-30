@@ -1,0 +1,48 @@
+.keyboard-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.additional-keys__container {
+  user-select: none;
+  width: 100%;
+  margin: 0.2rem 0 1rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  gap: 0.5rem;
+}
+
+.additional-keys__key {
+  cursor: pointer;
+  padding: 0.2rem;
+  border-radius: 0.2rem;
+  background-color: hsl(0, 0%, 95%);
+}
+
+.additional-keys__key:hover {
+  background-color: hsl(0, 0%, 100%);
+}
+
+.additional-keys__key:active {
+  background-color: hsl(0, 0%, 95%);
+}
+
+.rows__container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.rows__row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
