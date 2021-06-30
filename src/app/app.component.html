@@ -1,5 +1,20 @@
-<app-keyboard
-  *ngIf="layoutData"
-  [layoutData]="layoutData"
-  (onKey)="test($event)">
-</app-keyboard>
+<div class="virtual-keyboard__container">
+  <div class="virtual-keyboard__toolbar">
+    <app-drop-down
+      [selected]="selectedLayout"
+      [options]="availableLayouts"
+      (onSelect)="onLayoutSelected($event)">
+    </app-drop-down>
+  </div>
+  <app-text-field
+    class="virtual-keyboard__text"
+    [text]="text"
+    (onChange)="text = $event">
+  </app-text-field>
+  <app-keyboard
+    *ngIf="layoutData"
+    class="virtual-keyboard__keyboard"
+    [layoutData]="layoutData"
+    (onKey)="text = text + $event">
+  </app-keyboard>
+</div>

@@ -1,0 +1,35 @@
+.virtual-keyboard__container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.virtual-keyboard__toolbar {
+  height: 2rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0.1rem 0.2rem 0.01rem #00000030;
+  -webkit-box-shadow: 0 0.1rem 0.2rem 0.01rem #00000030;
+  -moz-box-shadow: 0 0.1rem 0.2rem 0.01rem #00000030;
+}
+
+.virtual-keyboard__text {
+  width: calc(100% - 1rem);
+  padding: 0.5rem;
+  flex-grow: 1;
+  margin-bottom: 0.5rem;
+}
+
+.virtual-keyboard__keyboard {
+  width: 100%;
+  padding-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  box-shadow: 0 -0.1rem 0.2rem 0.01rem #00000030;
+  -webkit-box-shadow: 0 -0.1rem 0.2rem 0.01rem #00000030;
+  -moz-box-shadow: 0 -0.1rem 0.2rem 0.01rem #00000030;
+}
