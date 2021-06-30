@@ -9,12 +9,12 @@
   <app-text-field
     class="virtual-keyboard__text"
     [text]="text"
-    (onChange)="text = $event">
+    (onChange)="setText($event)">
   </app-text-field>
   <app-keyboard
     *ngIf="layoutData"
     class="virtual-keyboard__keyboard"
     [layoutData]="layoutData"
-    (onKey)="text = text + $event">
+    (onKey)="setText(text + $event)">
   </app-keyboard>
 </div>
