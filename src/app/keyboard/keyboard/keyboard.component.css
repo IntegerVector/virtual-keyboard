@@ -8,13 +8,21 @@
 
 .additional-keys__container {
   user-select: none;
-  width: 100%;
-  margin: 0.2rem 0 1rem 0;
+  width: calc(100% - 1rem);
+  min-height: 1.4rem;
+  margin: 0.2rem 0.5rem 1rem 0.5rem;
   display: flex;
+  overflow-x: scroll;
   align-items: center;
   justify-content: center;
   flex-wrap: nowrap;
   gap: 0.5rem;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.additional-keys__container::-webkit-scrollbar {
+  display: none;
 }
 
 .additional-keys__key {
@@ -46,3 +54,21 @@
   justify-content: center;
   gap: 0.5rem;
 }
+
+@media only screen and (max-width: 600px) {
+  .rows__container {
+    gap: 0.3rem;
+    overflow: scroll;
+  } 
+
+  .rows__row {
+    gap: 0.3rem;
+  }
+
+  .additional-keys__container {
+    gap: 0.3rem;
+    margin: 0.1rem 0 0.5rem 0;
+    justify-content: flex-start;
+  }
+}
+

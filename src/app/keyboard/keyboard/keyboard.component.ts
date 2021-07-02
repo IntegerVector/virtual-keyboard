@@ -109,9 +109,9 @@ export class KeyboardComponent implements OnChanges {
       if (index === 3) {
         return {
           keys: [
-            this.getServiceKey(this.serviceKeys.ShiftLeft, ['Shift']),
+            this.getServiceKey(this.serviceKeys.ShiftLeft, ['⇧']),
             ...row.keys,
-            this.getServiceKey(this.serviceKeys.AltRight, ['AltGr'])
+            this.getServiceKey(this.serviceKeys.AltRight, ['alt'])
           ]
         };
       }

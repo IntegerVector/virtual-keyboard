@@ -57,3 +57,25 @@
 .label--active {
   color: hsl(0, 0%, 0%);
 }
+
+@media only screen and (max-width: 600px) {
+  .key-container {
+    display: grid;
+    grid-template-columns: 100%;
+    place-items: center;
+    height: 1.5rem;
+    min-width: 1.5rem;
+    width: 1.5rem;
+    padding: 0;
+  }
+
+  .label {
+    display: none;
+    visibility: hidden;
+  }
+
+  .label--active {
+    display: unset;
+    visibility: visible;
+  }
+}
