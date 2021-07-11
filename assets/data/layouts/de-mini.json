@@ -1,0 +1,52 @@
+{
+  "specialKeys": [],
+  "keyRows": [
+    [
+        { "code": "Digit1", "keys": ["1", "", "", ""] },
+        { "code": "Digit2", "keys": ["2", "", "", ""] },
+        { "code": "Digit3", "keys": ["3", "", "", ""] },
+        { "code": "Digit4", "keys": ["4", "", "", ""] },
+        { "code": "Digit5", "keys": ["5", "", "", ""] },
+        { "code": "Digit6", "keys": ["6", "", "", ""] },
+        { "code": "Digit7", "keys": ["7", "", "", ""] },
+        { "code": "Digit8", "keys": ["8", "", "", ""] },
+        { "code": "Digit9", "keys": ["9", "", "", ""] },
+        { "code": "Digit0", "keys": ["0", "", "", ""] }
+    ],
+    [
+        { "code": "KeyQ", "keys": ["q", "Q", "", ""] },
+        { "code": "KeyW", "keys": ["w", "W", "", ""] },
+        { "code": "KeyE", "keys": ["e", "E", "", ""] },
+        { "code": "KeyR", "keys": ["r", "R", "", ""] },
+        { "code": "KeyT", "keys": ["t", "T", "", ""] },
+        { "code": "KeyY", "keys": ["z", "Z", "", ""] },
+        { "code": "KeyU", "keys": ["u", "U", "", ""] },
+        { "code": "KeyI", "keys": ["i", "I", "", ""] },
+        { "code": "KeyO", "keys": ["o", "O", "", ""] },
+        { "code": "KeyP", "keys": ["p", "P", "", ""] },
+        { "code": "BracketLeft", "keys": ["ü", "Ü", "", ""] }
+    ],
+    [
+        { "code": "KeyA", "keys": ["a", "A", "", ""] },
+        { "code": "KeyS", "keys": ["s", "S", "", ""] },
+        { "code": "KeyD", "keys": ["d", "D", "", ""] },
+        { "code": "KeyF", "keys": ["f", "F", "", ""] },
+        { "code": "KeyG", "keys": ["g", "G", "", ""] },
+        { "code": "KeyH", "keys": ["h", "H", "", ""] },
+        { "code": "KeyJ", "keys": ["j", "J", "", ""] },
+        { "code": "KeyK", "keys": ["k", "K", "", ""] },
+        { "code": "KeyL", "keys": ["l", "L", "", ""] },
+        { "code": "Semicolon", "keys": ["ö", "Ö", "", ""] },
+        { "code": "Quote", "keys": ["ä", "Ä", "", ""] }
+    ],
+    [
+        { "code": "KeyZ", "keys": ["y", "Y", "", ""] },
+        { "code": "KeyX", "keys": ["x", "X", "", ""] },
+        { "code": "KeyC", "keys": ["c", "C", "", ""] },
+        { "code": "KeyV", "keys": ["v", "V", "", ""] },
+        { "code": "KeyB", "keys": ["b", "B", "", ""] },
+        { "code": "KeyN", "keys": ["n", "N", "", ""] },
+        { "code": "KeyM", "keys": ["m", "M", "", ""] }
+    ]
+  ]
+}
