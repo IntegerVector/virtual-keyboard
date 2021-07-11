@@ -80,6 +80,7 @@ export class KeyboardComponent implements OnChanges {
   }
 
   private generateRows(): KeyboardRow[] {
+    console.log(this.layoutData);
     return this.layoutData.keyRows.map(row => {
       return {
         keys: row.map(key => {

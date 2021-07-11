@@ -58,7 +58,7 @@
   color: hsl(0, 0%, 0%);
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 900px) {
   .key-container {
     display: grid;
     grid-template-columns: 100%;
