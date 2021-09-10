@@ -2,7 +2,6 @@ import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core
 
 import { LayoutData } from 'src/app/services/data-source/types/layout-data.interface';
 import { KeyboardRow } from './types/keyboard-row.interface';
-import { AdditionalKey } from './types/additional-key.interface';
 import { Key } from '../key/types/key.interface';
 
 @Component({
@@ -14,7 +13,6 @@ export class KeyboardComponent implements OnChanges {
   @Input()
   layoutData!: LayoutData;
 
-  public additionalKeys: AdditionalKey[] = [];
   public rows: KeyboardRow[] = [];
 
   private isShiftSticking = false;
@@ -29,7 +27,6 @@ export class KeyboardComponent implements OnChanges {
   public ngOnChanges(): void {
     const rows = this.generateRows();
     this.rows = this.extendLayoutData(rows);
-    this.additionalKeys = this.generateAdditionalKeys();
   }
 
   public getProperKeyLabel(key: Key): string {
@@ -80,7 +77,6 @@ export class KeyboardComponent implements OnChanges {
   }
 
   private generateRows(): KeyboardRow[] {
-    console.log(this.layoutData);
     return this.layoutData.keyRows.map(row => {
       return {
         keys: row.map(key => {
@@ -92,15 +88,6 @@ export class KeyboardComponent implements OnChanges {
             activeLabelNumber: 0
           };
         })
-      };
-    });
-  }
-
-  private generateAdditionalKeys(): AdditionalKey[] {
-    return this.layoutData.specialKeys.map(key => {
-      return {
-        code: key.code,
-        label: key.keys[0]
       };
     });
   }

@@ -95,6 +95,5 @@ export class AppComponent implements OnInit, OnDestroy {
     }
 
     this.layoutData = await this.getLayout();
-    console.log(this.layoutData);
   }
 }

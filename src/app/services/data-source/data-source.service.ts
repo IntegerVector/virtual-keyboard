@@ -19,7 +19,6 @@ export class DataSourceService {
   }
 
   public getLayout(layoutCode: string): Promise<LayoutData> {
-    console.log('full');
     return this
       .http
       .get<LayoutData>(`./assets/data/layouts/${layoutCode}.json`)
@@ -27,7 +26,6 @@ export class DataSourceService {
   }
 
   public getMiniLayout(layoutCode: string): Promise<LayoutData> {
-    console.log('mini');
     return this
       .http
       .get<LayoutData>(`./assets/data/layouts/${layoutCode}-mini.json`)

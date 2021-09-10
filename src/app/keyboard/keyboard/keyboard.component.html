@@ -1,15 +1,4 @@
 <div class="keyboard-container">
-  <div
-    *ngIf="additionalKeys.length"
-    class="additional-keys__container">
-    <div *ngFor="let addKey of additionalKeys">
-      <span
-      class="additional-keys__key"
-      (click)="sendKey(addKey.label)">
-      {{ addKey.label }}
-    </span>
-  </div>
-  </div>
   <div class="rows__container">
     <div
       class="rows__row"
