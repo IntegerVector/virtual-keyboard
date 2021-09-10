@@ -8,12 +8,11 @@ import { LocalStorageService } from 'src/app/services/local-storage/local-storag
 import { DataSourceService } from './services/data-source/data-source.service';
 import { ScreenSizeHelperService } from './services/screen-size-helper/screen-size-helper.service';
 import { ColorHelperService } from 'src/app/services/color-helper/color-helper.service';
+import { ClipboardService } from 'src/app/services/clipboard/clipboard.service';
 import { AppComponent } from './app.component';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     HttpClientModule,
@@ -24,7 +23,8 @@ import { AppComponent } from './app.component';
     DataSourceService,
     LocalStorageService,
     ScreenSizeHelperService,
-    ColorHelperService
+    ColorHelperService,
+    ClipboardService
   ],
   bootstrap: [AppComponent]
 })

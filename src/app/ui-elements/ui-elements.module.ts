@@ -4,13 +4,15 @@ import { FormsModule } from '@angular/forms';
 
 import { TextFieldComponent } from './text-field/text-field.component';
 import { DropDownComponent } from './drop-down/drop-down.component';
+import { ButtonComponent } from './button/button.component';
 
 
 
 @NgModule({
   declarations: [
     TextFieldComponent,
-    DropDownComponent
+    DropDownComponent,
+    ButtonComponent,
   ],
   imports: [
     CommonModule,
@@ -18,7 +20,8 @@ import { DropDownComponent } from './drop-down/drop-down.component';
   ],
   exports: [
     TextFieldComponent,
-    DropDownComponent
+    DropDownComponent,
+    ButtonComponent
   ]
 })
 export class UiElementsModule { }

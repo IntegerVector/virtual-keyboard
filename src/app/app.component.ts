@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs';
 import { DataSourceService } from 'src/app/services/data-source/data-source.service';
 import { LocalStorageService } from 'src/app/services/local-storage/local-storage.service';
 import { ScreenSizeHelperService } from 'src/app/services/screen-size-helper/screen-size-helper.service';
+import { ClipboardService } from 'src/app/services/clipboard/clipboard.service';
 import { LayoutData } from 'src/app/services/data-source/types/layout-data.interface';
 import { Option } from 'src/app/ui-elements/drop-down/types/option.interface';
 import { ScreenSize } from 'src/app/services/screen-size-helper/types/screen-size.interface';
@@ -31,7 +32,8 @@ export class AppComponent implements OnInit, OnDestroy {
   constructor(
     private dataSource: DataSourceService,
     private ls: LocalStorageService,
-    private screenSizeHelper: ScreenSizeHelperService
+    private screenSizeHelper: ScreenSizeHelperService,
+    private clipboardService: ClipboardService
   ) { }
 
   async ngOnInit(): Promise<void> {
@@ -67,6 +69,19 @@ export class AppComponent implements OnInit, OnDestroy {
       selectedLayout: layoutId,
       text: this.text
     });
+  }
+
+  public onDeleteKey(): void {
+    const newText = this.text.slice(0, this.text.length - 1);
+    this.setText(newText);
+  }
+
+  public onDeleteAll(): void {
+    this.setText('');
+  }
+
+  public onCopy(): void {
+    this.clipboardService.copyToClipboard(this.text);
   }
 
   private async getLayout(): Promise<LayoutData> {

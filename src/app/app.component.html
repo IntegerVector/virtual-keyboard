@@ -11,6 +11,20 @@
     [text]="text"
     (onChange)="setText($event)">
   </app-text-field>
+  <div class="toolbar__container">
+    <app-button
+      [icon]="'content_copy'"
+      (onClick)="onCopy()">
+    </app-button>
+    <app-button
+      [icon]="'delete'"
+      (onClick)="onDeleteAll()">
+    </app-button>
+    <app-button
+      [icon]="'backspace'"
+      (onClick)="onDeleteKey()">
+    </app-button>
+  </div>
   <app-keyboard
     *ngIf="layoutData"
     class="virtual-keyboard__keyboard"

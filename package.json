@@ -20,6 +20,7 @@
     "@angular/platform-browser-dynamic": "~12.2.5",
     "@angular/router": "~12.2.5",
     "angular-cli-ghpages": "^1.0.0-rc.2",
+    "material-icons": "^1.2.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.2.0",
     "zone.js": "~0.11.4"
