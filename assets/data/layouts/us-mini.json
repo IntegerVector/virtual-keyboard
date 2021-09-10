@@ -1,16 +1,16 @@
 {
   "keyRows": [
     [
-        { "code": "Digit1", "keys": ["1", "", "", ""] },
-        { "code": "Digit2", "keys": ["2", "", "", ""] },
-        { "code": "Digit3", "keys": ["3", "", "", ""] },
-        { "code": "Digit4", "keys": ["4", "", "", ""] },
-        { "code": "Digit5", "keys": ["5", "", "", ""] },
-        { "code": "Digit6", "keys": ["6", "", "", ""] },
-        { "code": "Digit7", "keys": ["7", "", "", ""] },
-        { "code": "Digit8", "keys": ["8", "", "", ""] },
-        { "code": "Digit9", "keys": ["9", "", "", ""] },
-        { "code": "Digit0", "keys": ["0", "", "", ""] }
+        { "code": "Digit1", "keys": ["1", "1", "", ""] },
+        { "code": "Digit2", "keys": ["2", "2", "", ""] },
+        { "code": "Digit3", "keys": ["3", "3", "", ""] },
+        { "code": "Digit4", "keys": ["4", "4", "", ""] },
+        { "code": "Digit5", "keys": ["5", "5", "", ""] },
+        { "code": "Digit6", "keys": ["6", "6", "", ""] },
+        { "code": "Digit7", "keys": ["7", "7", "", ""] },
+        { "code": "Digit8", "keys": ["8", "8", "", ""] },
+        { "code": "Digit9", "keys": ["9", "9", "", ""] },
+        { "code": "Digit0", "keys": ["0", "0", "", ""] }
     ],
     [
         { "code": "KeyQ", "keys": ["q", "Q", "", ""] },
