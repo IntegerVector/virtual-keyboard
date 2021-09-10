@@ -1,5 +1,7 @@
-import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output } from '@angular/core';
+import { Subscription } from 'rxjs';
 
+import { KeyboardService } from 'src/app/services/keyboard/keyboard.service';
 import { LayoutData } from 'src/app/services/data-source/types/layout-data.interface';
 import { KeyboardRow } from './types/keyboard-row.interface';
 import { Key } from '../key/types/key.interface';
@@ -9,7 +11,7 @@ import { Key } from '../key/types/key.interface';
   templateUrl: './keyboard.component.html',
   styleUrls: ['./keyboard.component.css']
 })
-export class KeyboardComponent implements OnChanges {
+export class KeyboardComponent implements OnInit, OnChanges, OnDestroy {
   @Input()
   layoutData!: LayoutData;
 
@@ -30,11 +32,21 @@ export class KeyboardComponent implements OnChanges {
   private serviceKeyColor = '#CCCCCC';
   private regularKeyColor = '#FFFFFF';
 
-  constructor() {}
+  private subscriptions: Subscription[] = [];
+
+  constructor(private keyboardService: KeyboardService) {}
+
+  public ngOnInit(): void {
+    this.initSubscribers();
+  }
 
   public ngOnChanges(): void {
     const rows = this.generateRows();
     this.rows = this.extendLayoutData(rows);
+  }
+
+  public ngOnDestroy(): void {
+    this.unsubscribeAll();
   }
 
   public getKeyColor(key: Key): string {
@@ -66,7 +78,7 @@ export class KeyboardComponent implements OnChanges {
     return 0;
   }
 
-  public handleKey(key: Key, index: number): void {
+  public handleKey(key: Key): void {
     switch (key.code) {
       case this.serviceKeys.ShiftLeft:
         this.isShiftSticking = !this.isShiftSticking;
@@ -83,6 +95,19 @@ export class KeyboardComponent implements OnChanges {
           this.sendKey(label);
         }
     }
+  }
+
+  private initSubscribers(): void {
+    const keyDown = this
+      .keyboardService
+      .keydown
+      .subscribe(this.onKeyDownEvent.bind(this));
+
+    this.subscriptions.push(keyDown);
+  }
+
+  private unsubscribeAll(): void {
+    this.subscriptions.forEach(subscription => subscription.unsubscribe());
   }
 
   private getProperKeyLabel(key: Key): string {
@@ -152,5 +177,18 @@ export class KeyboardComponent implements OnChanges {
       code,
       labels
     };
+  }
+
+  private onKeyDownEvent(code: string): void {
+    const shift = /shift/i.test(code);
+    const alt = /alt/i.test(code);
+
+    if (shift) {
+      this.handleKey(this.rows[3].keys[0]);
+    }
+
+    if (alt) {
+      this.handleKey(this.rows[3].keys[this.rows[3].keys.length - 1]);
+    }
   }
 }

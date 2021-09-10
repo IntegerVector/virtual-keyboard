@@ -9,6 +9,7 @@ import { DataSourceService } from './services/data-source/data-source.service';
 import { ScreenSizeHelperService } from './services/screen-size-helper/screen-size-helper.service';
 import { ColorHelperService } from 'src/app/services/color-helper/color-helper.service';
 import { ClipboardService } from 'src/app/services/clipboard/clipboard.service';
+import { KeyboardService } from 'src/app/services/keyboard/keyboard.service';
 import { AppComponent } from './app.component';
 
 @NgModule({
@@ -24,7 +25,8 @@ import { AppComponent } from './app.component';
     LocalStorageService,
     ScreenSizeHelperService,
     ColorHelperService,
-    ClipboardService
+    ClipboardService,
+    KeyboardService
   ],
   bootstrap: [AppComponent]
 })

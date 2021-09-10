@@ -13,6 +13,7 @@
   cursor: pointer;
   background-color: #FFFFFF;
   user-select: none;
+  outline: none;
 }
 
 .button__container:hover {
