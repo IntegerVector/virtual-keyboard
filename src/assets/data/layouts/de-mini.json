@@ -11,7 +11,8 @@
         { "code": "Digit7", "keys": ["7", "", "", ""] },
         { "code": "Digit8", "keys": ["8", "", "", ""] },
         { "code": "Digit9", "keys": ["9", "", "", ""] },
-        { "code": "Digit0", "keys": ["0", "", "", ""] }
+        { "code": "Digit0", "keys": ["0", "", "", ""] },
+        { "code": "Minus", "keys": ["ß", "", "", ""] }
     ],
     [
         { "code": "KeyQ", "keys": ["q", "Q", "", ""] },
