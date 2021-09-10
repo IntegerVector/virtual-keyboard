@@ -46,7 +46,7 @@
         { "code": "KeyB", "keys": ["b", "B", "", ""] },
         { "code": "KeyN", "keys": ["n", "N", "", ""] },
         { "code": "KeyM", "keys": ["m", "M", "", ""] },
-        { "code": "SharpS", "keys": ["ß", "", "", ""] }
+        { "code": "SharpS", "keys": ["ß", "ß", "", ""] }
     ]
   ]
 }
