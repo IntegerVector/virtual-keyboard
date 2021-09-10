@@ -10,8 +10,7 @@
         { "code": "Digit7", "keys": ["7", "", "", ""] },
         { "code": "Digit8", "keys": ["8", "", "", ""] },
         { "code": "Digit9", "keys": ["9", "", "", ""] },
-        { "code": "Digit0", "keys": ["0", "", "", ""] },
-        { "code": "Minus", "keys": ["ß", "", "", ""] }
+        { "code": "Digit0", "keys": ["0", "", "", ""] }
     ],
     [
         { "code": "KeyQ", "keys": ["q", "Q", "", ""] },
@@ -46,7 +45,8 @@
         { "code": "KeyV", "keys": ["v", "V", "", ""] },
         { "code": "KeyB", "keys": ["b", "B", "", ""] },
         { "code": "KeyN", "keys": ["n", "N", "", ""] },
-        { "code": "KeyM", "keys": ["m", "M", "", ""] }
+        { "code": "KeyM", "keys": ["m", "M", "", ""] },
+        { "code": "SharpS", "keys": ["ß", "", "", ""] }
     ]
   ]
 }
