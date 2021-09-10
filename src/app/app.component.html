@@ -15,6 +15,7 @@
     *ngIf="layoutData"
     class="virtual-keyboard__keyboard"
     [layoutData]="layoutData"
+    [isMobileView]="isMobileView"
     (onKey)="setText(text + $event)">
   </app-keyboard>
 </div>

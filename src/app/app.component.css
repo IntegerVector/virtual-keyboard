@@ -28,7 +28,7 @@
 .virtual-keyboard__keyboard {
   width: 100%;
   padding-top: 0.5rem;
-  margin-bottom: 0.5rem;
+  padding-bottom: 0.5rem;
   box-shadow: 0 -0.1rem 0.2rem 0.01rem #00000030;
   -webkit-box-shadow: 0 -0.1rem 0.2rem 0.01rem #00000030;
   -moz-box-shadow: 0 -0.1rem 0.2rem 0.01rem #00000030;
@@ -36,7 +36,7 @@
 
 @media only screen and (max-width: 900px) {
   .virtual-keyboard__keyboard {
-    margin-bottom: 0.2rem;
+    padding-bottom: 0.2rem;
   }
 }
 

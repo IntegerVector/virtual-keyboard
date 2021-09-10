@@ -1,4 +1,6 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnChanges } from '@angular/core';
+
+import { ColorHelperService } from 'src/app/services/color-helper/color-helper.service';
 
 import { Key } from './types/key.interface';
 
@@ -7,27 +9,46 @@ import { Key } from './types/key.interface';
   templateUrl: './key.component.html',
   styleUrls: ['./key.component.css']
 })
-export class KeyComponent {
-  @Input()key: Key = {
+export class KeyComponent implements OnChanges {
+  @Input() key: Key = {
     code: '',
-    labels: [],
-    activeLabelNumber: 0,
-    sticking: false,
-    highlighted: false
+    labels: []
   };
+  @Input() activeLabelNumber = 0;
+  @Input() color = '#FFFFFF';
 
   @Output() clicked = new EventEmitter<Key>();
 
-  public getButtonClasses(): string {
-    const isHighlighted = this.key.highlighted ? 'key-container--highlighted' : '';
-    const isActive = this.key.sticking ? 'key-container--sticking' : '';
+  private lightKey = '#FFFFFF';
+  private darkKey = '#000000';
+  private greyKey = '#CCCCCC'
 
-    return `${isHighlighted} ${isActive}`;
+  public keyColor = this.darkKey;
+
+  constructor(private colorHelperService: ColorHelperService) {}
+
+  ngOnChanges(): void {
+    this.keyColor = this.getKeyColor();
   }
 
-  public getLabelClasses(labelNumber: number): string {
-    return labelNumber === this.key.activeLabelNumber
+  public getLabelColor(labelNumber: number): string {
+    return labelNumber === this.activeLabelNumber
+      ? this.keyColor
+      : this.greyKey
+  }
+
+  public getLabelClass(labelNumber: number): string {
+    return labelNumber === this.activeLabelNumber
       ? 'label label--active'
-      : 'label'
+      : 'label';
+  }
+
+  private getKeyColor(): string {
+    const { r, g, b } = this.colorHelperService.hexToRgb(this.color);
+    const luminance = (0.299 * r + 0.587 * g + 0.114 * b)/255;
+
+    return luminance > 0.5
+      ? this.darkKey
+      : this.lightKey;
   }
 }

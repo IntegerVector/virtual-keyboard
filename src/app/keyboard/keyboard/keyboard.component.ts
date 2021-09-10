@@ -13,6 +13,10 @@ export class KeyboardComponent implements OnChanges {
   @Input()
   layoutData!: LayoutData;
 
+  @Input() isMobileView = false;
+
+  @Output() onKey = new EventEmitter<string>();
+
   public rows: KeyboardRow[] = [];
 
   private isShiftSticking = false;
@@ -22,14 +26,66 @@ export class KeyboardComponent implements OnChanges {
     AltRight: 'AltRight'
   };
 
-  @Output() onKey = new EventEmitter<string>();
+  private stickingKeyColor = '#000000';
+  private serviceKeyColor = '#CCCCCC';
+  private regularKeyColor = '#FFFFFF';
+
+  constructor() {}
 
   public ngOnChanges(): void {
     const rows = this.generateRows();
     this.rows = this.extendLayoutData(rows);
   }
 
-  public getProperKeyLabel(key: Key): string {
+  public getKeyColor(key: Key): string {
+    if (key.code === this.serviceKeys.AltRight) {
+      return this.isAltSticking ? this.stickingKeyColor : this.serviceKeyColor;
+    }
+
+    if (key.code === this.serviceKeys.ShiftLeft) {
+      return this.isShiftSticking ? this.stickingKeyColor : this.serviceKeyColor;
+    }
+
+    return this.regularKeyColor;
+  }
+
+  public getActiveLabelNumber(key: Key): number {
+    if (this.serviceKeys.AltRight === key.code || this.serviceKeys.ShiftLeft === key.code) {
+      return 0;
+    }
+    if (this.isShiftSticking && this.isAltSticking) {
+      return 3;
+    }
+    if (this.isShiftSticking) {
+      return 1;
+    }
+    if (this.isAltSticking) {
+      return 2;
+    }
+
+    return 0;
+  }
+
+  public handleKey(key: Key, index: number): void {
+    switch (key.code) {
+      case this.serviceKeys.ShiftLeft:
+        this.isShiftSticking = !this.isShiftSticking;
+        break;
+      case this.serviceKeys.AltRight:
+        this.isAltSticking = !this.isAltSticking;
+        break;
+      default:
+        const isServiceKey = Object.values(this.serviceKeys).find(val => val === key.code);
+        if (isServiceKey) {
+          this.sendKey(key.code);
+        } else {
+          const label = this.getProperKeyLabel(key);
+          this.sendKey(label);
+        }
+    }
+  }
+
+  private getProperKeyLabel(key: Key): string {
     /**
      * If no sticking, then 0 index label
      * If Shift sticking, then 1 index label
@@ -49,30 +105,7 @@ export class KeyboardComponent implements OnChanges {
     return key.labels[0];
   }
 
-  public handleKey(key: Key, index: number): void {
-    switch (key.code) {
-      case this.serviceKeys.ShiftLeft:
-        this.isShiftSticking = !this.isShiftSticking;
-        this.toggleSticking(index, this.serviceKeys.ShiftLeft);
-        break;
-      case this.serviceKeys.AltRight:
-        this.isAltSticking = !this.isAltSticking;
-        this.toggleSticking(index, this.serviceKeys.AltRight);
-        break;
-      default:
-        const isServiceKey = Object.values(this.serviceKeys).find(val => val === key.code);
-        if (isServiceKey) {
-          this.sendKey(key.code);
-        } else {
-          const label = this.getProperKeyLabel(key);
-          this.sendKey(label);
-        }
-    }
-
-    this.updateActiveLabelNumber();
-  }
-
-  public sendKey(keyLabel: string): void {
+  private sendKey(keyLabel: string): void {
     this.onKey.emit(keyLabel);
   }
 
@@ -82,10 +115,7 @@ export class KeyboardComponent implements OnChanges {
         keys: row.map(key => {
           return {
             code: key.code,
-            labels: key.keys,
-            highlighted: true,
-            sticking: false,
-            activeLabelNumber: 0
+            labels: key.keys
           };
         })
       };
@@ -95,13 +125,20 @@ export class KeyboardComponent implements OnChanges {
   private extendLayoutData(layoutData: KeyboardRow[]): KeyboardRow[] {
     return layoutData.map((row, index) => {
       if (index === 3) {
-        return {
-          keys: [
-            this.getServiceKey(this.serviceKeys.ShiftLeft, ['⇧']),
-            ...row.keys,
-            this.getServiceKey(this.serviceKeys.AltRight, ['alt'])
-          ]
-        };
+        return this.isMobileView
+        ? {
+            keys: [
+              this.getServiceKey(this.serviceKeys.ShiftLeft, ['⇧']),
+              ...row.keys,
+            ]
+          }
+        : {
+            keys: [
+              this.getServiceKey(this.serviceKeys.ShiftLeft, ['⇧']),
+              ...row.keys,
+              this.getServiceKey(this.serviceKeys.AltRight, ['alt'])
+            ]
+          };
       }
 
       return {
@@ -113,40 +150,7 @@ export class KeyboardComponent implements OnChanges {
   private getServiceKey(code: string, labels: string[]): Key {
     return {
       code,
-      labels,
-      highlighted: false,
-      sticking: false,
-      activeLabelNumber: 0
+      labels
     };
-  }
-
-  private toggleSticking(index: number, code: string): void {
-    const key = this.rows[index].keys.find(key => key.code === code);
-    if (key) {
-      key.sticking = !key.sticking;
-    }
-  }
-
-  private updateActiveLabelNumber(): void {
-    const activeLabelNumber = this.getActiveLabelNumber();
-    this.rows.forEach(row => {
-      row.keys.forEach(key => {
-        key.activeLabelNumber = activeLabelNumber;
-      });
-    });
-  }
-
-  private getActiveLabelNumber(): number {
-    if (this.isShiftSticking && this.isAltSticking) {
-      return 3;
-    }
-    if (this.isShiftSticking) {
-      return 1;
-    }
-    if (this.isAltSticking) {
-      return 2;
-    }
-
-    return 0;
   }
 }

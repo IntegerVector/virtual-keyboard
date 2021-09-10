@@ -6,6 +6,8 @@
         <app-key
           *ngFor="let key of row.keys"
           [key]="key"
+          [color]="getKeyColor(key)"
+          [activeLabelNumber]="getActiveLabelNumber(key)"
           (clicked)="handleKey($event, i)">
         </app-key>
     </div>

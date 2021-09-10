@@ -1,17 +1,17 @@
 <div
   class="key-container"
-  [ngClass]="getButtonClasses()"
+  [ngStyle]="{ 'background-color': color }"
   (click)="clicked.emit(key)">
-  <span [ngClass]="getLabelClasses(1)">
+  <span [ngClass]="getLabelClass(1)" [ngStyle]="{ 'color': getLabelColor(1) }">
     {{ key.labels[1] }}
   </span>
-  <span [ngClass]="getLabelClasses(3)">
+  <span [ngClass]="getLabelClass(3)" [ngStyle]="{ 'color': getLabelColor(3) }">
     {{ key.labels[3] }}
   </span>
-  <span [ngClass]="getLabelClasses(0)">
+  <span [ngClass]="getLabelClass(0)" [ngStyle]="{ 'color': getLabelColor(0) }">
     {{ key.labels[0] }}
   </span>
-  <span [ngClass]="getLabelClasses(2)">
+  <span [ngClass]="getLabelClass(2)" [ngStyle]="{ 'color': getLabelColor(2) }">
     {{ key.labels[2] }}
   </span>
 </div>

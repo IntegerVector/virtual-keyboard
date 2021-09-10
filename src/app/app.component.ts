@@ -23,6 +23,7 @@ export class AppComponent implements OnInit, OnDestroy {
   public text = '';
   public selectedLayout = 'ua';
   public availableLayouts: Option[] = [];
+  public isMobileView = false;
 
   private subscriptions: Subscription[] = [];
   private keyboardSize = KeyboardSize.Mini;
@@ -89,8 +90,10 @@ export class AppComponent implements OnInit, OnDestroy {
 
   private async onScreenSizeChanged(size: ScreenSize): Promise<void> {
     if (size.width <= 600 || size.height <= 600) {
+      this.isMobileView = true;
       this.keyboardSize = KeyboardSize.Mini;
     } else {
+      this.isMobileView = false;
       this.keyboardSize = KeyboardSize.Full;
     }
 

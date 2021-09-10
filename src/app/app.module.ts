@@ -7,6 +7,7 @@ import { KeyboardModule } from './keyboard/keyboard.module';
 import { LocalStorageService } from 'src/app/services/local-storage/local-storage.service';
 import { DataSourceService } from './services/data-source/data-source.service';
 import { ScreenSizeHelperService } from './services/screen-size-helper/screen-size-helper.service';
+import { ColorHelperService } from 'src/app/services/color-helper/color-helper.service';
 import { AppComponent } from './app.component';
 
 @NgModule({
@@ -22,7 +23,8 @@ import { AppComponent } from './app.component';
   providers: [
     DataSourceService,
     LocalStorageService,
-    ScreenSizeHelperService
+    ScreenSizeHelperService,
+    ColorHelperService
   ],
   bootstrap: [AppComponent]
 })

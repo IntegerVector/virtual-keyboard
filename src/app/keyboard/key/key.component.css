@@ -8,54 +8,10 @@
   display: grid;
   grid-template-columns: 50% 50%;
   border-radius: 0.2rem;
-  background-color: hsl(0, 0%, 75%);
   box-shadow: -0.05rem 0.05rem 0.2rem 0.01rem #00000030;
   -webkit-box-shadow: -0.05rem 0.05rem 0.2rem 0.01rem #00000030;
   -moz-box-shadow: -0.05rem 0.05rem 0.2rem 0.01rem #00000030;
   transition: background-color 100ms;
-}
-
-.key-container:hover {
-  background-color: hsl(0, 0%, 80%);
-}
-
-.key-container:active {
-  background-color: hsl(0, 0%, 75%);
-}
-
-.key-container--highlighted {
-  background-color: transparent
-}
-
-.key-container--highlighted:hover {
-  background-color: hsl(0, 0%, 95%);
-}
-
-.key-container--highlighted:active {
-  background-color: transparent
-}
-
-.key-container--sticking {
-  color: white;
-  background-color: hsl(0, 0%, 0%);
-}
-
-.key-container--sticking:hover {
-  color: white;
-  background-color: hsl(0, 0%, 20%);
-}
-
-.key-container--sticking:active {
-  color: white;
-  background-color: hsl(0, 0%, 0%);
-}
-
-.label {
-  color: hsl(0, 0%, 80%);
-}
-
-.label--active {
-  color: hsl(0, 0%, 0%);
 }
 
 @media only screen and (max-width: 900px) {
