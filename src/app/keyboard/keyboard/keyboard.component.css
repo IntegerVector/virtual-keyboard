@@ -24,7 +24,6 @@
 @media only screen and (max-width: 950px) {
   .rows__container {
     gap: 0.3rem;
-    overflow: scroll;
   } 
 
   .rows__row {
