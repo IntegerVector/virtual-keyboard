@@ -11,6 +11,7 @@ import { ColorHelperService } from 'src/app/services/color-helper/color-helper.s
 import { ClipboardService } from 'src/app/services/clipboard/clipboard.service';
 import { KeyboardService } from 'src/app/services/keyboard/keyboard.service';
 import { AppComponent } from './app.component';
+import { UserAgentService } from 'src/app/services/user-agent/user-agent.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -26,7 +27,8 @@ import { AppComponent } from './app.component';
     ScreenSizeHelperService,
     ColorHelperService,
     ClipboardService,
-    KeyboardService
+    KeyboardService,
+    UserAgentService
   ],
   bootstrap: [AppComponent]
 })

@@ -5,6 +5,8 @@ import { KeyboardService } from 'src/app/services/keyboard/keyboard.service';
 import { LayoutData } from 'src/app/services/data-source/types/layout-data.interface';
 import { KeyboardRow } from './types/keyboard-row.interface';
 import { Key } from '../key/types/key.interface';
+import { UserAgentService } from 'src/app/services/user-agent/user-agent.service';
+import { SupportedOS } from 'src/app/services/user-agent/types/supported-os.enum';
 
 @Component({
   selector: 'app-keyboard',
@@ -33,8 +35,12 @@ export class KeyboardComponent implements OnInit, OnChanges, OnDestroy {
   private regularKeyColor = '#FFFFFF';
 
   private subscriptions: Subscription[] = [];
+  private osType = this.userAgentService.getOSName();
 
-  constructor(private keyboardService: KeyboardService) {}
+  constructor(
+    private keyboardService: KeyboardService,
+    private userAgentService: UserAgentService
+  ) { }
 
   public ngOnInit(): void {
     this.initSubscribers();
@@ -151,17 +157,21 @@ export class KeyboardComponent implements OnInit, OnChanges, OnDestroy {
     return layoutData.map((row, index) => {
       if (index === 3) {
         return this.isMobileView
-        ? {
+          ? {
             keys: [
               this.getServiceKey(this.serviceKeys.ShiftLeft, ['⇧']),
               ...row.keys,
             ]
           }
-        : {
+          : {
             keys: [
               this.getServiceKey(this.serviceKeys.ShiftLeft, ['⇧']),
               ...row.keys,
-              this.getServiceKey(this.serviceKeys.AltRight, ['alt'])
+              this.getServiceKey(this.serviceKeys.AltRight, [
+                this.osType === SupportedOS.MacOS
+                  ? '⌥'
+                  : 'alt'
+              ])
             ]
           };
       }
