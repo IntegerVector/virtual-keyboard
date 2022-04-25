@@ -1,13 +1,16 @@
 <div class="keyboard-container">
-  <div class="rows__container">
+  <div
+    *ngIf="keyboardStrategy"
+    class="rows__container">
     <div
       class="rows__row"
       *ngFor="let row of rows; index as i">
         <app-key
           *ngFor="let key of row.keys"
+          [subject]="keyboardService.subjects[key.code]"
           [key]="key"
-          [color]="getKeyColor(key)"
-          [activeLabelNumber]="getActiveLabelNumber(key)"
+          [color]="keyboardStrategy.getKeyColor(key)"
+          [activeLabelNumber]="keyboardStrategy.getActiveLabelNumber(key)"
           (clicked)="handleKey($event)">
         </app-key>
     </div>

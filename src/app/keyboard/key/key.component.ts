@@ -1,7 +1,7 @@
-import { Component, Input, Output, EventEmitter, OnChanges } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnChanges, OnInit, OnDestroy } from '@angular/core';
+import { Subject } from 'rxjs';
 
 import { ColorHelperService } from 'src/app/services/color-helper/color-helper.service';
-
 import { Key } from './types/key.interface';
 
 @Component({
@@ -9,7 +9,9 @@ import { Key } from './types/key.interface';
   templateUrl: './key.component.html',
   styleUrls: ['./key.component.css']
 })
-export class KeyComponent implements OnChanges {
+export class KeyComponent implements OnChanges, OnInit, OnDestroy {
+  @Input()
+  subject!: Subject<string>;
   @Input() key: Key = {
     code: '',
     labels: []
@@ -27,8 +29,24 @@ export class KeyComponent implements OnChanges {
 
   constructor(private colorHelperService: ColorHelperService) {}
 
+  ngOnInit(): void {
+    if (this.subject) {
+      this.subject.subscribe(code => {
+        if (code === this.key.code) {
+          this.clicked.emit(this.key);
+        }
+      });
+    }
+  }
+
   ngOnChanges(): void {
     this.keyColor = this.getKeyColor();
+  }
+
+  ngOnDestroy(): void {
+    if (this.subject) {
+      this.subject.unsubscribe();
+    }
   }
 
   public getLabelColor(labelNumber: number): string {

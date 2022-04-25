@@ -8,6 +8,8 @@ import { ClipboardService } from 'src/app/services/clipboard/clipboard.service';
 import { LayoutData } from 'src/app/services/data-source/types/layout-data.interface';
 import { Option } from 'src/app/ui-elements/drop-down/types/option.interface';
 import { ScreenSize } from 'src/app/services/screen-size-helper/types/screen-size.interface';
+import { KeyboardService } from 'src/app/services/keyboard/keyboard.service';
+import { SERVICE_KEYS } from 'src/app/constants/service-keys.constant';
 
 enum KeyboardSize {
   Full,
@@ -33,7 +35,8 @@ export class AppComponent implements OnInit, OnDestroy {
     private dataSource: DataSourceService,
     private ls: LocalStorageService,
     private screenSizeHelper: ScreenSizeHelperService,
-    private clipboardService: ClipboardService
+    private clipboardService: ClipboardService,
+    private keyboardService: KeyboardService
   ) { }
 
   async ngOnInit(): Promise<void> {
@@ -95,8 +98,24 @@ export class AppComponent implements OnInit, OnDestroy {
       .screenSizeHelper
       .sizeChanged
       .subscribe(this.onScreenSizeChanged.bind(this));
+    const backspaceSubscriber = this
+      .keyboardService
+      .subjects[SERVICE_KEYS.Backspace]
+      .subscribe(() => {
+        this.onDeleteKey();
+      });
+    const deleteSubscriber = this
+      .keyboardService
+      .subjects[SERVICE_KEYS.Delete]
+      .subscribe(() => {
+        this.onDeleteAll();
+      });
 
-    this.subscriptions.push(screenSizeSubscriber);
+    this.subscriptions.push(
+      screenSizeSubscriber,
+      backspaceSubscriber,
+      deleteSubscriber
+    );
   }
 
   private unsubscribeAll(): void {
