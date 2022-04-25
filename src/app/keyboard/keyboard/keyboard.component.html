@@ -10,6 +10,7 @@
           [subject]="keyboardService.subjects[key.code]"
           [key]="key"
           [color]="keyboardStrategy.getKeyColor(key)"
+          [width]="key.code === 'Space' ? 5 : 1"
           [activeLabelNumber]="keyboardStrategy.getActiveLabelNumber(key)"
           (clicked)="handleKey($event)">
         </app-key>

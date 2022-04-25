@@ -1,4 +1,14 @@
-import { Component, Input, Output, EventEmitter, OnChanges, OnInit, OnDestroy } from '@angular/core';
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  OnChanges,
+  OnInit,
+  OnDestroy,
+  ViewChild,
+  AfterViewInit
+} from '@angular/core';
 import { Subject } from 'rxjs';
 
 import { Key } from './types/key.interface';
@@ -10,7 +20,7 @@ import { ColorHelperService } from 'src/app/services/color-helper/color-helper.s
   templateUrl: './key.component.html',
   styleUrls: ['./key.component.css']
 })
-export class KeyComponent implements OnChanges, OnInit, OnDestroy {
+export class KeyComponent implements OnChanges, OnInit, AfterViewInit, OnDestroy {
   @Input()
   subject!: Subject<string>;
   @Input() key: Key = {
@@ -19,8 +29,11 @@ export class KeyComponent implements OnChanges, OnInit, OnDestroy {
   };
   @Input() activeLabelNumber = 0;
   @Input() color = '#FFFFFF';
+  @Input() width = 1;
 
   @Output() clicked = new EventEmitter<Key>();
+
+  @ViewChild('keyComponent') keyComponent: any;
 
   private lightKey = '#FFFFFF';
   private darkKey = '#000000';
@@ -38,6 +51,13 @@ export class KeyComponent implements OnChanges, OnInit, OnDestroy {
           this.clicked.emit(this.key);
         }
       });
+    }
+  }
+
+  ngAfterViewInit(): void {
+    if (this.width !== 1) {
+      this.keyComponent.nativeElement.style.width =
+        this.keyComponent.nativeElement.clientWidth * this.width + 'px';
     }
   }
 
