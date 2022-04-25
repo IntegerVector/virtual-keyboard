@@ -98,23 +98,23 @@ export class AppComponent implements OnInit, OnDestroy {
       .screenSizeHelper
       .sizeChanged
       .subscribe(this.onScreenSizeChanged.bind(this));
-    const backspaceSubscriber = this
+    const keyboardSubscriber = this
       .keyboardService
-      .subjects[SERVICE_KEYS.Backspace]
-      .subscribe(() => {
-        this.onDeleteKey();
-      });
-    const deleteSubscriber = this
-      .keyboardService
-      .subjects[SERVICE_KEYS.Delete]
-      .subscribe(() => {
-        this.onDeleteAll();
+      .keyDown$
+      .subscribe(event => {
+        if (event.code === SERVICE_KEYS.Backspace) {
+          this.onDeleteKey();
+          event.preventDefault();
+        }
+        if (event.code === SERVICE_KEYS.Delete) {
+          this.onDeleteAll();
+          event.preventDefault();
+        }
       });
 
     this.subscriptions.push(
       screenSizeSubscriber,
-      backspaceSubscriber,
-      deleteSubscriber
+      keyboardSubscriber
     );
   }
 

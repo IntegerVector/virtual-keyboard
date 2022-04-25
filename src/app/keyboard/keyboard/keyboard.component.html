@@ -7,7 +7,6 @@
       *ngFor="let row of rows; index as i">
         <app-key
           *ngFor="let key of row.keys"
-          [subject]="keyboardService.subjects[key.code]"
           [key]="key"
           [color]="keyboardStrategy.getKeyColor(key)"
           [width]="key.code === 'Space' ? 5 : 1"

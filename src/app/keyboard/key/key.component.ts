@@ -9,11 +9,12 @@ import {
   ViewChild,
   AfterViewInit
 } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Subscription } from 'rxjs';
 
 import { Key } from './types/key.interface';
 import { SERVICE_KEYS } from 'src/app/constants/service-keys.constant';
 import { ColorHelperService } from 'src/app/services/color-helper/color-helper.service';
+import { KeyboardService } from 'src/app/services/keyboard/keyboard.service';
 
 @Component({
   selector: 'app-key',
@@ -21,8 +22,6 @@ import { ColorHelperService } from 'src/app/services/color-helper/color-helper.s
   styleUrls: ['./key.component.css']
 })
 export class KeyComponent implements OnChanges, OnInit, AfterViewInit, OnDestroy {
-  @Input()
-  subject!: Subject<string>;
   @Input() key: Key = {
     code: '',
     labels: []
@@ -34,24 +33,27 @@ export class KeyComponent implements OnChanges, OnInit, AfterViewInit, OnDestroy
   @Output() clicked = new EventEmitter<Key>();
 
   @ViewChild('keyComponent') keyComponent: any;
-
+  
   private lightKey = '#FFFFFF';
   private darkKey = '#000000';
-  private greyKey = '#CCCCCC'
-
+  private greyKey = '#CCCCCC';
+  private subscription: Subscription | undefined;
+  
   public keyColor = this.darkKey;
 
-  constructor(private colorHelperService: ColorHelperService) { }
+  constructor(
+    private colorHelperService: ColorHelperService,
+    private keyboardService: KeyboardService
+  ) { }
 
   ngOnInit(): void {
-    if (this.subject) {
-      this.subject.subscribe(code => {
-        if (code === this.key.code) {
-          this.highlightKey();
-          this.clicked.emit(this.key);
-        }
-      });
-    }
+    this.subscription = this.keyboardService.keyDown$.subscribe(event => {
+      if (event.code === this.key.code) {
+        event.preventDefault();
+        this.highlightKey();
+        this.clicked.emit(this.key);
+      }
+    })
   }
 
   ngAfterViewInit(): void {
@@ -66,8 +68,8 @@ export class KeyComponent implements OnChanges, OnInit, AfterViewInit, OnDestroy
   }
 
   ngOnDestroy(): void {
-    if (this.subject) {
-      this.subject.unsubscribe();
+    if (this.subscription) {
+      this.subscription.unsubscribe();
     }
   }
 
