@@ -7,7 +7,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "deploy": "ng deploy"
+    "deploy": "ng deploy",
+    "update": "ng update @angular/cli && ng update @angular/core && ng update rxjs && ng update && ng update --all --force"
   },
   "private": true,
   "dependencies": {
@@ -27,7 +28,7 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^13.0.2",
-    "@angular/cli": "~13.0.2",
+    "@angular/cli": "^13.3.3",
     "@angular/compiler-cli": "~13.0.1",
     "@types/jasmine": "~3.6.0",
     "@types/node": "^12.11.1",
