@@ -8,7 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "deploy": "ng deploy",
-    "update": "ng update @angular/cli && ng update @angular/core && ng update rxjs && ng update && ng update --all --force"
+    "update": "ng update @angular/cli && ng update @angular/core && ng update rxjs && ng update"
   },
   "private": true,
   "dependencies": {
@@ -22,7 +22,7 @@
     "@angular/router": "~13.3.4",
     "angular-cli-ghpages": "^1.0.0-rc.2",
     "material-icons": "^1.2.1",
-    "rxjs": "~6.6.0",
+    "rxjs": "~7.5.5",
     "tslib": "^2.2.0",
     "zone.js": "~0.11.4"
   },
