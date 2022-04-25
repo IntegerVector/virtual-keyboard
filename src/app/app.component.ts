@@ -104,7 +104,7 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   private async onScreenSizeChanged(size: ScreenSize): Promise<void> {
-    if (size.width <= 600 || size.height <= 600) {
+    if (size.width <= 800) {
       this.isMobileView = true;
       this.keyboardSize = KeyboardSize.Mini;
     } else {
