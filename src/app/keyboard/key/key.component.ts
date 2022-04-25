@@ -1,8 +1,9 @@
 import { Component, Input, Output, EventEmitter, OnChanges, OnInit, OnDestroy } from '@angular/core';
 import { Subject } from 'rxjs';
 
-import { ColorHelperService } from 'src/app/services/color-helper/color-helper.service';
 import { Key } from './types/key.interface';
+import { SERVICE_KEYS } from 'src/app/constants/service-keys.constant';
+import { ColorHelperService } from 'src/app/services/color-helper/color-helper.service';
 
 @Component({
   selector: 'app-key',
@@ -27,12 +28,13 @@ export class KeyComponent implements OnChanges, OnInit, OnDestroy {
 
   public keyColor = this.darkKey;
 
-  constructor(private colorHelperService: ColorHelperService) {}
+  constructor(private colorHelperService: ColorHelperService) { }
 
   ngOnInit(): void {
     if (this.subject) {
       this.subject.subscribe(code => {
         if (code === this.key.code) {
+          this.highlightKey();
           this.clicked.emit(this.key);
         }
       });
@@ -63,10 +65,23 @@ export class KeyComponent implements OnChanges, OnInit, OnDestroy {
 
   private getKeyColor(): string {
     const { r, g, b } = this.colorHelperService.hexToRgb(this.color);
-    const luminance = (0.299 * r + 0.587 * g + 0.114 * b)/255;
+    const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
 
     return luminance > 0.5
       ? this.darkKey
       : this.lightKey;
+  }
+
+  private highlightKey(): void {
+    if (this.key.code === SERVICE_KEYS.AltRight || this.key.code === SERVICE_KEYS.ShiftLeft) {
+      return;
+    }
+
+    const previousColor = this.color;
+    this.color = this.darkKey;
+
+    setTimeout(() => {
+      this.color = previousColor;
+    }, 75);
   }
 }
