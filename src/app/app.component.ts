@@ -30,6 +30,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   private subscriptions: Subscription[] = [];
   private keyboardSize = KeyboardSize.Mini;
+  private textFieldFocused = false;
 
   constructor(
     private dataSource: DataSourceService,
@@ -74,6 +75,10 @@ export class AppComponent implements OnInit, OnDestroy {
     });
   }
 
+  public onTextFieldFocusChange(focusState: boolean) {
+    this.textFieldFocused = focusState;
+  }
+
   public onDeleteKey(): void {
     const newText = this.text.slice(0, this.text.length - 1);
     this.setText(newText);
@@ -103,8 +108,10 @@ export class AppComponent implements OnInit, OnDestroy {
       .keyDown$
       .subscribe(event => {
         if (event.code === SERVICE_KEYS.Backspace) {
-          this.onDeleteKey();
-          event.preventDefault();
+          if (!this.textFieldFocused) {
+            this.onDeleteKey();
+            event.preventDefault();
+          }
         }
         if (event.code === SERVICE_KEYS.Delete) {
           this.onDeleteAll();

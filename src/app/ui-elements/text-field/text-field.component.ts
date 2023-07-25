@@ -8,4 +8,5 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class TextFieldComponent {
   @Input() text: string = '';
   @Output() onChange = new EventEmitter<any>();
+  @Output() onFocusChange = new EventEmitter<boolean>();
 }

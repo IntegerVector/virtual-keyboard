@@ -2,5 +2,8 @@
   class="text__container"
   [placeholder]="'Type here ...'"
   [(ngModel)]="text"
-  (ngModelChange)="onChange.emit($event)">
+  (ngModelChange)="onChange.emit($event)"
+  (focus)="onFocusChange.emit(true)"
+  (blur)="onFocusChange.emit(false)"
+>
 </textarea>

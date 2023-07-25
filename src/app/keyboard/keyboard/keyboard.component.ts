@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
 
-import { KeyboardService } from 'src/app/services/keyboard/keyboard.service';
 import { LayoutData } from 'src/app/services/data-source/types/layout-data.interface';
 import { KeyboardRow } from './types/keyboard-row.interface';
 import { Key } from '../key/types/key.interface';
@@ -25,10 +24,7 @@ export class KeyboardComponent implements OnChanges {
 
   private osType = this.userAgentService.getOSName();
 
-  constructor(
-    private userAgentService: UserAgentService,
-    public keyboardService: KeyboardService
-  ) { }
+  constructor(private userAgentService: UserAgentService) { }
 
   public ngOnChanges(): void {
     this.keyboardStrategy = getStrategy({

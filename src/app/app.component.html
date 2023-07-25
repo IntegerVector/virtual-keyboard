@@ -9,6 +9,7 @@
   <app-text-field
     class="virtual-keyboard__text"
     [text]="text"
+    (onFocusChange)="onTextFieldFocusChange($event)"
     (onChange)="setText($event)">
   </app-text-field>
   <div class="toolbar__container">
