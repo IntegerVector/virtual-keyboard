@@ -7,7 +7,7 @@
   justify-content: flex-end;
 }
 
-.virtual-keyboard__toolbar {
+.virtual-keyboard__panel {
   height: 2rem;
   width: 100%;
   display: flex;
