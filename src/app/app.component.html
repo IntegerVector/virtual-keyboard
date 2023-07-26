@@ -9,7 +9,9 @@
   <app-text-field
     class="virtual-keyboard__text"
     [text]="text"
+    [selectionStart]="selectionStart"
     (onFocusChange)="onTextFieldFocusChange($event)"
+    (onSelectionChange)="onSelectionChange($event)"
     (onChange)="setText($event)">
   </app-text-field>
   <div class="toolbar__container">
@@ -31,6 +33,6 @@
     class="virtual-keyboard__keyboard"
     [layoutData]="layoutData"
     [isMobileView]="isMobileView"
-    (onKey)="setText(text + $event)">
+    (onKey)="onKeyPressed($event)">
   </app-keyboard>
 </div>

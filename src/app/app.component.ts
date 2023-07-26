@@ -27,6 +27,8 @@ export class AppComponent implements OnInit, OnDestroy {
   public selectedLayout = 'ua';
   public availableLayouts: Option[] = [];
   public isMobileView = false;
+  public selectionStart?: number;
+  public selectionEnd?: number;
 
   private subscriptions: Subscription[] = [];
   private keyboardSize = KeyboardSize.Mini;
@@ -45,6 +47,7 @@ export class AppComponent implements OnInit, OnDestroy {
     if (appConfigs) {
       this.selectedLayout = appConfigs?.selectedLayout || 'ua';
       this.text = appConfigs?.text || '';
+      this.selectionStart = this.text.length;
     }
 
     this.initSubscribers();
@@ -75,8 +78,28 @@ export class AppComponent implements OnInit, OnDestroy {
     });
   }
 
-  public onTextFieldFocusChange(focusState: boolean) {
+  public onTextFieldFocusChange(focusState: boolean): void {
     this.textFieldFocused = focusState;
+  }
+
+  public onSelectionChange({ selectionStart, selectionEnd }: { selectionStart: number; selectionEnd: number }): void {
+    this.selectionStart = selectionStart;
+    this.selectionEnd = selectionEnd;
+  }
+
+  public onKeyPressed(key: string) {
+    if (this.textFieldFocused) {
+      this.selectionStart = this.selectionStart || this.text.length;
+      this.selectionEnd = this.selectionEnd || this.text.length;
+
+      const length = this.selectionEnd - this.selectionStart;
+      const charArray = this.text.split('');
+      charArray.splice(this.selectionStart, length, key);
+      this.setText(charArray.join(''));
+      this.selectionStart += 1;
+    } else {
+      this.setText(this.text + key);
+    }
   }
 
   public onDeleteKey(): void {
@@ -111,6 +134,9 @@ export class AppComponent implements OnInit, OnDestroy {
           if (!this.textFieldFocused) {
             this.onDeleteKey();
             event.preventDefault();
+          }
+          if (this.selectionStart && this.selectionStart > 0) {
+            this.selectionStart -= 1;
           }
         }
         if (event.code === SERVICE_KEYS.Delete) {

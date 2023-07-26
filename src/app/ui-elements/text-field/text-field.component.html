@@ -1,9 +1,14 @@
+<!--
+  Don't use ngModel here, set all values with #textarea
+  see method setTextAreaValues()
+-->
 <textarea
+  #textarea
   class="text__container"
   [placeholder]="'Type here ...'"
-  [(ngModel)]="text"
-  (ngModelChange)="onChange.emit($event)"
   (focus)="onFocusChange.emit(true)"
   (blur)="onFocusChange.emit(false)"
+  (selectionchange)="onSelection()"
+  (input)="onTextAreaChange()"
 >
 </textarea>
