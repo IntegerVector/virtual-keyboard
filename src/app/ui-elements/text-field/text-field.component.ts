@@ -27,6 +27,9 @@ export class TextFieldComponent implements OnChanges, AfterViewInit {
   ngOnChanges(changes: SimpleChanges): void {
     if (this.textArea && changes.text) {
       this.setTextAreaValues();
+
+      // Workaround for iOS Safari:
+      this.textArea.nativeElement.blur();
     }
   }
 
