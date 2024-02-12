@@ -68,10 +68,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "virtual-keyboard:build:production"
+              "buildTarget": "virtual-keyboard:build:production"
             },
             "development": {
-              "browserTarget": "virtual-keyboard:build:development"
+              "buildTarget": "virtual-keyboard:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -79,7 +79,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "virtual-keyboard:build"
+            "buildTarget": "virtual-keyboard:build"
           }
         },
         "test": {
