@@ -10,6 +10,11 @@ import { Option } from 'src/app/ui-elements/drop-down/types/option.interface';
 import { ScreenSize } from 'src/app/services/screen-size-helper/types/screen-size.interface';
 import { KeyboardService } from 'src/app/services/keyboard/keyboard.service';
 import { SERVICE_KEYS } from 'src/app/constants/service-keys.constant';
+import { TextFieldComponent } from 'src/app/ui-elements/text-field/text-field.component';
+import { DropDownComponent } from 'src/app/ui-elements/drop-down/drop-down.component';
+import { ButtonComponent } from 'src/app/ui-elements/button/button.component';
+import { KeyboardComponent } from 'src/app/keyboard/keyboard.component';
+import { CommonModule } from '@angular/common';
 
 enum KeyboardSize {
   Full,
@@ -18,6 +23,8 @@ enum KeyboardSize {
 
 @Component({
   selector: 'app-root',
+  standalone: true,
+  imports: [CommonModule, DropDownComponent, TextFieldComponent, ButtonComponent, KeyboardComponent],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })

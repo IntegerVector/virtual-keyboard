@@ -9,6 +9,7 @@ import {
   ViewChild,
   AfterViewInit
 } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { Subscription } from 'rxjs';
 
 import { Key } from './types/key.interface';
@@ -18,6 +19,8 @@ import { KeyboardService } from 'src/app/services/keyboard/keyboard.service';
 
 @Component({
   selector: 'app-key',
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './key.component.html',
   styleUrls: ['./key.component.css']
 })

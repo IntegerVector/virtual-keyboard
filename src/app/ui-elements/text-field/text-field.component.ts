@@ -12,6 +12,7 @@ import {
 
 @Component({
   selector: 'app-text-field',
+  standalone: true,
   templateUrl: './text-field.component.html',
   styleUrls: ['./text-field.component.css']
 })

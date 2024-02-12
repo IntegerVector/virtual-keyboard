@@ -1,14 +1,18 @@
 import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
+import { KeyComponent } from 'src/app/keyboard/key/key.component';
 import { LayoutData } from 'src/app/services/data-source/types/layout-data.interface';
 import { KeyboardRow } from './types/keyboard-row.interface';
-import { Key } from '../key/types/key.interface';
+import { Key } from './key/types/key.interface';
 import { UserAgentService } from 'src/app/services/user-agent/user-agent.service';
-import { BaseKeyboardStrategy } from 'src/app/keyboard/keyboard/strategies/base-keyboard.strategy';
-import { getStrategy } from 'src/app/keyboard/keyboard/keyboard-strategy.factory';
+import { BaseKeyboardStrategy } from 'src/app/keyboard/strategies/base-keyboard.strategy';
+import { getStrategy } from 'src/app/keyboard/keyboard-strategy.factory';
 
 @Component({
   selector: 'app-keyboard',
+  standalone: true,
+  imports: [CommonModule, KeyComponent],
   templateUrl: './keyboard.component.html',
   styleUrls: ['./keyboard.component.css']
 })

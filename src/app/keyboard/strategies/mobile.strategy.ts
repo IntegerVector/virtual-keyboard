@@ -1,6 +1,6 @@
 import { SERVICE_KEYS } from 'src/app/constants/service-keys.constant';
-import { BaseKeyboardStrategy } from 'src/app/keyboard/keyboard/strategies/base-keyboard.strategy';
-import { KeyboardRow } from 'src/app/keyboard/keyboard/types/keyboard-row.interface';
+import { BaseKeyboardStrategy } from 'src/app/keyboard/strategies/base-keyboard.strategy';
+import { KeyboardRow } from 'src/app/keyboard/types/keyboard-row.interface';
 import { LayoutData } from 'src/app/services/data-source/types/layout-data.interface';
 
 export class MobileStrategy extends BaseKeyboardStrategy {

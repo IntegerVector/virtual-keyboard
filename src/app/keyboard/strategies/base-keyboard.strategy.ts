@@ -1,7 +1,7 @@
 import { Key } from 'src/app/keyboard/key/types/key.interface';
-import { REGULAR_KEY_COLOR, SERVICE_KEY_COLOR, STICKING_KEY_COLOR } from 'src/app/keyboard/keyboard/constants/colors.constant';
+import { REGULAR_KEY_COLOR, SERVICE_KEY_COLOR, STICKING_KEY_COLOR } from 'src/app/keyboard/constants/colors.constant';
 import { SERVICE_KEYS } from 'src/app/constants/service-keys.constant';
-import { KeyboardRow } from 'src/app/keyboard/keyboard/types/keyboard-row.interface';
+import { KeyboardRow } from 'src/app/keyboard/types/keyboard-row.interface';
 import { LayoutData } from 'src/app/services/data-source/types/layout-data.interface';
 
 export class BaseKeyboardStrategy {
